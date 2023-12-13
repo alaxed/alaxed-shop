@@ -2,7 +2,7 @@
 
     <aside class="sidebar">
       <div class="logo">
-        <a href="/home/index"> <img src="/img/core-img/favicon.ico" alt="logo"> </a>
+        <a href="../../index.php"> <img src="/img/core-img/favicon.ico" alt="logo"> </a>
         <h2>One Sound</h2>
       </div>
       <ul class="links">
