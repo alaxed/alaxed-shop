@@ -140,7 +140,7 @@ if(isset($_GET['action']) && $_GET['action']=='logout'){
                            
                         } 
                         if(isset($_SESSION['role'])){
-                            echo "<li class='nav-item'><a class='nav-link' href='./admin/category/addCate.php'>Managent</a></li>";
+                            echo "<li class='nav-item'><a class='nav-link' href='./admin/addCate.php'>Managent</a></li>";
                         }
                         ?>
                         

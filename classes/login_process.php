@@ -1,8 +1,8 @@
 <?php
-    include './lib/session.php';
+    include_once './lib/session.php';
     Session::checkLogin();
-    include './lib/database.php';
-    include './helper/format.php';
+    include_once './lib/database.php';
+    include_once './helper/format.php';
 ?>
 
 <?php
@@ -28,7 +28,7 @@
                 $alert = "Username and Password must be not empty!";
                 return $alert;
             }else{
-                $query = "SELECT * FROM tbl_account WHERE username = '$username'";
+                $query = "SELECT * FROM tbl_account WHERE username = '$username' AND password = '$password'";
                 $rs = $this->db->select($query);
                 if($rs != false){
                     $value = $rs->fetch_assoc();
