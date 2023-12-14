@@ -1,14 +1,26 @@
+<?php include '../classes/category.php' ?>
 <?php include '../classes/brand.php' ?>
+<?php include '../classes/product.php' ?>
 <?php
 session_start();
+
+//Category
+$cate = new category();
+$cateList = $cate->findAll();
+
+//Brand
 $brand = new brand();
-$listBrand = $brand->findAll();
+$brandList = $brand->findAll();
+
+//product
+$product = new product();
+$listPro = $product->findAll();
 if (isset($_GET['brandId'])) {
     $id = $_GET['brandId'];
-    $del = $brand->delById($id);
+    $del = $product->delById($id);
     if ($del) {
         echo "<script>alert('$del')</script>";
-        echo "<script>window.location='listBrand.php'</script>";
+        echo "<script>window.location='listPro.php'</script>";
     }
 }
 
@@ -43,7 +55,7 @@ if (isset($_GET['brandId'])) {
     <div>
         <!-- HEADER Ở ĐÂY -->
         <!-- <div th:replace="~{/admin/headeradmin.html :: header}"></div> -->
-        <h1 class="text-center align-middle">List Brand</h1>
+        <h1 class="text-center align-middle">List Product</h1>
         <p class="fs-2 text-center text-success">
 
         </p>
@@ -57,25 +69,47 @@ if (isset($_GET['brandId'])) {
                     <thead>
                         <tr>
                             <th scope="col">No.</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Type</th>
+                            
+                            
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        if (!empty($listBrand)) {
-                            foreach ($listBrand as $index => $b) {
+                        if (!empty($listPro)) {
+                            foreach ($listPro as $index => $p) {
                                 ?>
                                 <tr>
                                     <td>
                                         <?php echo $index + 1 ?>
                                     </td>
                                     <td>
-                                        <?php echo $b['name'] ?>
+                                        <img src="uploads/<?php echo $p['image'] ?>" width="60px" alt="">
+                                    </td>
+                                    <td>
+                                        <?php echo $p['name'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $p['category'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $p['brand'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $p['price'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $p['type'] == 0 ? 'Featured' : 'Non-Featured'  ?>
                                     </td>
                                     <td class="text-center">
-                                        <a href="editBrand.php?brandId=<?php echo $b['id'] ?>" class="btn btn-primary">Edit</a>
-                                        <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $b['id'] ?>)" class="btn btn-danger">Del</a>
+                                        <a href="editPro.php?proId=<?php echo $p['id'] ?>" class="btn btn-primary">Edit</a>
+                                        <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $p['id'] ?>)" class="btn btn-danger">Del</a>
                                     </td>
                                 </tr>
 

@@ -47,7 +47,7 @@
 
 
         public function findById($id){
-            $query = "SELECT * FROM tbl_brand WHERE id = '$id' ";
+            $query = "SELECT * FROM tbl_brand WHERE id = '$id'";
             $rs = $this->db->insert($query);
             return $rs;
         }

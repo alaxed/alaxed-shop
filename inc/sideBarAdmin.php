@@ -1,8 +1,4 @@
-<?php
-include_once '../lib/session.php';
-
-
-
+<?php include_once '../lib/session.php';
 Session::checkSession();
 Session::checkRole();
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
@@ -47,10 +43,21 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
             <li><a class="dropdown-item" href="listBrand.php">List Brand</a></li>
             
           </ul>
+        </div>
       </li>
       <li>
         <span class="material-symbols-outlined">flag</span>
-        <a th:href="@{/genres/index}">Genres</a>
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownCate"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Product
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownCate">
+            <li><a class="dropdown-item" href="addPro.php">Add Product</a></li>
+            <li><a class="dropdown-item" href="listPro.php">List Product</a></li>
+            
+          </ul>
+        </div>
       </li>
       <li>
         <span class="material-symbols-outlined">flag</span>
