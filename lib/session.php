@@ -54,6 +54,15 @@ class Session
         session_destroy();
         header("Location:login.php");
     }
+
+    public static function checkRole(){
+        self::init();
+        if (self::get("role") != 0) {
+            self::destroy();
+            header("Location: ../login.php");
+            exit(); // Dừng thực thi của script sau khi chuyển hướng
+        }
+    }
 }
 
 ?>

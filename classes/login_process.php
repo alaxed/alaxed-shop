@@ -46,9 +46,6 @@
             }
         }
 
-        public function login_destroy(){
-
-        }
-
+        
     }
 ?>

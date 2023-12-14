@@ -4,7 +4,9 @@ include_once '../lib/session.php';
 
 
 Session::checkSession();
+Session::checkRole();
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+  
   session_destroy();
   header("Location:../login.php");
 }
@@ -26,7 +28,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
             data-bs-toggle="dropdown" aria-expanded="false">
             Category
           </a>
-
           <ul class="dropdown-menu" aria-labelledby="dropdownCate">
             <li><a class="dropdown-item" href="addCate.php">Add Category</a></li>
             <li><a class="dropdown-item" href="listCate.php">List Category</a></li>
@@ -36,7 +37,16 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       </li>
       <li>
         <span class="material-symbols-outlined">show_chart</span>
-        <a th:href="@{/singer/index}">Singer</a>
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownCate"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Brand
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownCate">
+            <li><a class="dropdown-item" href="addBrand.php">Add Brand</a></li>
+            <li><a class="dropdown-item" href="listBrand.php">List Brand</a></li>
+            
+          </ul>
       </li>
       <li>
         <span class="material-symbols-outlined">flag</span>
